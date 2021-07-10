@@ -1,3 +1,4 @@
+import 'package:farmer/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -45,7 +46,10 @@ class _LoginFormState extends State<LoginForm> {
               child: Text("Submit"),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  if (auth(_email, _password) == 1) {}
+                  if (auth(_email, _password) == 1) {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => HomePage()),
+  );}
                 }
               },
             ),

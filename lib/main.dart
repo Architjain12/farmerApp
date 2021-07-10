@@ -1,4 +1,5 @@
 import 'package:farmer/pages/getStarted.dart';
+import 'package:farmer/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           themeMode: themeProvider.themeMode,
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
-          home: GetStartedPage(),
+          home: HomePage(),//GetStartedPage(),
         );
       });
 }
