@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:farmer/pages/home.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -16,51 +19,78 @@ class _LoginFormState extends State<LoginForm> {
     String? _email;
     String? _password;
     return Form(
-        child: Column(
+      key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextFormField(
-          decoration: InputDecoration(hintText: 'Enter Email'),
-          validator: (String? value) {
-            _email = value;
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          decoration: InputDecoration(hintText: 'Enter password'),
-          validator: (String? value) {
-            _password = value;
-            if (value == null || value.isEmpty) {
-              return 'Please enter password';
-            }
-            return null;
-          },
-        ),
-        Center(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: ElevatedButton(
-              child: Text("Submit"),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  if (auth(_email, _password) == 1) {Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => HomePage()),
-  );}
-                }
-              },
+          TextFormField(
+            obscureText: false,
+            cursorColor: Colors.black, 
+            enableSuggestions: true,
+            autocorrect: false,
+            style: TextStyle(
+              color: Colors.black,
             ),
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: 'Enter Email',
+              fillColor: Colors.yellow,
+              hintStyle: TextStyle(color: Colors.black),
+            ),
+            validator: (String? value) {
+              _email = value;
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
           ),
-        )
+          TextFormField(
+            obscureText: true,
+            cursorColor: Colors.black, 
+            enableSuggestions: false,
+            autocorrect: false,
+            style: TextStyle(
+              color: Colors.black,
+            ),
+            //keyboardType: TextInputType.visiblePassword,
+            decoration: InputDecoration(
+              hintText: 'Enter password',
+              fillColor: Colors.yellow,
+              hintStyle: TextStyle(color: Colors.black),
+            ),
+            validator: (String? value) {
+              _password = value;
+              if (value == null || value.isEmpty) {
+                return 'Please enter password';
+              }
+              return null;
+            },
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: ElevatedButton(
+                child: Text("Submit"),
+                onPressed: () {
+                  if (auth(_email, _password) == 1) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  }
+                },
+              ),
+            ),
+          )
       ],
-    ));
+    ),
+        ));
   }
 }
 
 int auth(email, password) {
   return 1;
 }
-

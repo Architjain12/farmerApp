@@ -17,10 +17,7 @@ import 'package:flutter/material.dart';
 
 AppBar myAppBar() {
   return AppBar(
-    leading: IconButton(
-      icon: Icon(Icons.menu),
-      onPressed: () {},
-    ),
+    
     title: Text("Upaja"),
     actions: [
       IconButton(onPressed: () {}, icon: Icon(Icons.search)),
