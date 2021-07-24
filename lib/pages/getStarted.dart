@@ -1,6 +1,5 @@
-import 'package:farmer/pages/loginForm.dart';
 import 'package:farmer/pages/modal_trigger.dart';
-import 'package:farmer/widget/changeTheme.dart';
+import 'package:farmer/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,23 +11,16 @@ class GetStartedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SafeArea(
-          top: true,
-          bottom: true,
-          child: Column(
-            children: [
-              SizedBox(
-                  height: 2 * screenHeight / 5,
-                  child: Lottie.asset("asset/hi.json") //Image.asset("asset/images/undraw_Meditation_re_gll0.png")
-                  ),
-              //SizedBox(height: screenHeight / 10),
-              SizedBox(
-                  height: 3 * screenHeight / 10,
-                  child: Image(image: AssetImage("asset/bb.jpg"))),
-              Theme(data: Theme.of(context).copyWith(canvasColor: Colors.transparent), child: ModalTrigger())
-              
-            ],
-          )),
-    );
+      body: Column(
+        children: [
+          SizedBox(
+                      height: 3 * screenHeight / 5,
+                      child:ThemeProvider().isDarkMode? Lottie.asset("asset/hiDark.json"):Lottie.asset("asset/hiLight.json")  //Image.asset("asset/images/undraw_Meditation_re_gll0.png")
+                      ),
+                      //Theme(data: Theme.of(context).copyWith(canvasColor: Colors.transparent), child: ModalTrigger()),
+                      //Container(alignment: Alignment.bottomCenter,child: Theme(data: Theme.of(context).copyWith(canvasColor: Colors.transparent), child: ModalTrigger())),
+        ],
+      ),
+    bottomNavigationBar: Container(child: Theme(data: Theme.of(context).copyWith(canvasColor: Colors.transparent), child: ModalTrigger())),);
   }
 }

@@ -1,11 +1,10 @@
 import 'package:farmer/pages/productDetail.dart';
-import 'package:farmer/widget/appBar.dart';
-import 'package:farmer/widget/bottomBar.dart';
 import 'package:farmer/widget/productSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/scrollbar_behavior_enum.dart';
 import 'package:intro_slider/slide_object.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,24 +16,31 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController tc = TabController(length: 3, vsync: this);
-    TabController tcc = TabController(length: 3, vsync: this);
-
     return Scaffold(
       drawer: Drawer(
         child: Material(
-          color: Colors.blue,
-          child: ListView(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              buildMenuItem(text: "people", icon: Icons.people)
-            ],
+          color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.only(left : 12.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 40,
+                ),
+                CircleAvatar(),
+                Text("Archit Jain",
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                buildMenuItem(text: "people", icon: Icons.people,context: context, nextpage: ProductDetailPage(id: 2)),
+                buildMenuItem(text: "people", icon: Icons.policy,context: context, nextpage: ProductDetailPage(id: 20)),
+                BottomAppBar(
+                  child:Row(children: [Icon(Icons.logout),SizedBox(width: 4,) ,Text("Log Out")],
+                  )
+                )
+              ],
+            ),
           ),
         ),
       ),
-      appBar: myAppBar(),
       body: ListView(
         children: [
           InkWell(
@@ -42,20 +48,34 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 height: 300,
                 child: ProductSlider(items: ["asset/aa.jpg", "asset/bb.jpg"])),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => ProductDetailPage(id: 1)));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => ProductDetailPage(id: 1)));
             },
           )
         ],
       ),
-      bottomNavigationBar: myBottomNavigationBar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+      //params
+   ),
+   floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+   bottomNavigationBar: AnimatedBottomNavigationBar(
+      icons: [Icons.home, Icons.phone, Icons.settings
+      ],
+      activeIndex:1,// _bottomNavIndex,
+      gapLocation: GapLocation.center,
+      notchSmoothness: NotchSmoothness.verySmoothEdge,
+      leftCornerRadius: 32,
+      rightCornerRadius: 32,
+      onTap: (index) => setState(() => index),
+      //other params
+   ),
+      //bottomNavigationBar: myBottomNavigationBar(),
     );
   }
 }
 
-Widget buildMenuItem({required String text, required IconData icon}) {
+Widget buildMenuItem({required String text, required IconData icon, required context , required nextpage}) {
   final color = Colors.red;
   return ListTile(
     leading: Icon(icon, color: color),
@@ -63,7 +83,8 @@ Widget buildMenuItem({required String text, required IconData icon}) {
       text,
       style: TextStyle(color: color),
     ),
-    onTap: () {},
+    onTap: () {Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => nextpage));},
   );
 }
 

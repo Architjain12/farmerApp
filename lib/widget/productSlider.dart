@@ -10,7 +10,7 @@ class ActiveDot extends StatelessWidget {
         width: 20,
         height: 5,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(5),
         ),
       ),
@@ -27,7 +27,7 @@ class InactiveDot extends StatelessWidget {
         width: 8,
         height: 5,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.3),
+          color: Theme.of(context).primaryColorDark.withOpacity(0.3),
           borderRadius: BorderRadius.circular(5),
         ),
       ),
@@ -76,15 +76,11 @@ class _ProductSliderState extends State<ProductSlider> {
               items: widget.items.map((item) {
                 return Builder(
                   builder: (BuildContext context) {
-                    return Stack(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(image: DecorationImage(image: AssetImage(item), fit: BoxFit.fill)),
-                          //width: MediaQuery.of(context).size.width,
-                          height: 300,
-                          //child: Row(children: [Text("Fuck oFF")],),
-                        ),
-                      ],
+                    return Container(
+                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage(item), fit: BoxFit.fill)),
+                      //width: MediaQuery.of(context).size.width,
+                      height: 300,
+                      //child: Row(children: [Text("Fuck oFF")],),
                     );
                   },
                 );

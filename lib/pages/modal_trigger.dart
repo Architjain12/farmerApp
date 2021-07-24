@@ -1,34 +1,82 @@
 import 'package:farmer/pages/loginForm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
 
-class ModalTrigger extends StatelessWidget {
+class ModalTrigger extends StatefulWidget {
   const ModalTrigger({Key? key}) : super(key: key);
-  
+
+  @override
+  State<ModalTrigger> createState() => _ModalTriggerState();
+}
+
+class _ModalTriggerState extends State<ModalTrigger> {
   _loginPopUp(context, _height) {
     showModalBottomSheet(
         context: context,
-        //barrierColor: Colors.black.withAlpha(150),
-        //elevation: 10,
         builder: (BuildContext context) {
           return Container(
             child: LoginForm(),
-            height: 3*_height / 4,
             decoration: BoxDecoration(
-              color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),),),
+              color: Colors.green,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
           );
         });
   }
 
+  bool changeButtton = false;
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
-    return ElevatedButton(
-                      onPressed: () {
-                        _loginPopUp(context, screenHeight);
-                      },
-                      child: Text("Get Started"));
+    return AnimatedContainer(duration: Duration(seconds: 2),
+      child: InkWell(
+          onTap: () async {
+            setState(() {
+              changeButtton=true;
+            });
+            
+            await Future.delayed(Duration(seconds: 2));
+             _loginPopUp(context, screenHeight);
+          },
+          child: changeButtton ? DoneButton() : GetStartedButton()),
+    );
+  }
+}
+
+class GetStartedButton extends StatelessWidget {
+  const GetStartedButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(alignment: Alignment.center,
+      height: 100,
+      width: 150,
+      child: Text(
+        "Get Started",
+        maxLines: 1,
+        style: TextStyle(color: Theme.of(context).primaryColorDark, fontSize: 22),
+      ),
+    );
+  }
+}
+
+class DoneButton extends StatelessWidget {
+  const DoneButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(decoration: BoxDecoration(shape: BoxShape.circle),
+        height: 200,
+        width: 200,
+        child: Lottie.asset("asset/tick.json", reverse: true));
   }
 }

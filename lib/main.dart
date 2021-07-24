@@ -1,4 +1,6 @@
 import 'package:farmer/pages/getStarted.dart';
+import 'package:farmer/pages/homee.dart';
+//import 'package:farmer/pages/imageUpload.dart';
 //import 'package:farmer/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'FarmApp',
           themeMode: themeProvider.themeMode,
+          debugShowCheckedModeBanner: false,
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
           home: GetStartedPage(),
