@@ -27,14 +27,24 @@ class MyTheme {
     primaryColorDark: Colors.white,
     scaffoldBackgroundColor: Color(0xFF121212),
     colorScheme: ColorScheme.dark(),
-    //canvasColor: Colors.transparent,
+    textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+        )
+    
   );
   static final lightTheme = ThemeData(
     primaryColorDark: Colors.black,
     primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(),
-    //canvasColor: Colors.transparent,
+    textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
+          headline2: TextStyle(fontSize: 18.0, fontStyle: FontStyle.italic),
+          bodyText1: TextStyle(fontSize: 14.0),
+          bodyText2: TextStyle(fontSize: 14.0, color: Color(0xFF616161)),
+        )
   );
 }
 

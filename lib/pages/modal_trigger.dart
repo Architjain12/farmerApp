@@ -1,4 +1,5 @@
 import 'package:farmer/pages/loginForm.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
@@ -34,13 +35,15 @@ class _ModalTriggerState extends State<ModalTrigger> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     return AnimatedContainer(duration: Duration(seconds: 2),
+    curve: Curves.bounceIn,
       child: InkWell(
           onTap: () async {
+            //await Future.delayed(Duration(seconds: 2));
             setState(() {
               changeButtton=true;
             });
             
-            await Future.delayed(Duration(seconds: 2));
+            await Future.delayed(Duration(seconds: 4));
              _loginPopUp(context, screenHeight);
           },
           child: changeButtton ? DoneButton() : GetStartedButton()),
@@ -56,8 +59,9 @@ class GetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(alignment: Alignment.center,
+      color: Colors.purple,//Theme.of(context).primaryColorLight,
       height: 100,
-      width: 150,
+      width: 200,
       child: Text(
         "Get Started",
         maxLines: 1,

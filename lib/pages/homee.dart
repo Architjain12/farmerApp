@@ -33,7 +33,214 @@ class _MyHomePageState extends State<MyHomePage>
   ];
   final data = [Text("home"), Text("1"), Text("data"), Text("ds")];
   final pages = [
-    Text("ds"),
+    Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+            Column(
+              children: [
+                Text("Popular",
+                    style: TextStyle(fontSize: 24.0, color: Colors.black)),
+                Text(
+                  "Let's choose and enjoy food",
+                  style: TextStyle(fontSize: 14.0, color: Color(0xFF616161)),
+                ),
+              ],
+            ),
+            Icon(
+              Icons.forward,
+              color: Colors.black,
+            ),
+          ],
+        ),SizedBox(height: 10,),
+        Container(
+          height: 150,
+          width: 350,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Image.asset(
+                "asset/aa.jpg",fit: BoxFit.fitWidth,),
+              SizedBox(
+                width: 5,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rice",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("100Rs/per Kg", style: TextStyle(color: Colors.white)),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Agra, Up", style: TextStyle(color: Colors.white))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Colors.purple,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),SizedBox(height: 10,),
+        Container(
+          height: 150,
+          width: 350,padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Image.asset(
+                "asset/aa.jpg",fit: BoxFit.fitWidth,),
+              SizedBox(
+                width: 5,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rice",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("100Rs/per Kg", style: TextStyle(color: Colors.white)),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Agra, Up", style: TextStyle(color: Colors.white))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Colors.yellow,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),SizedBox(height: 10,),
+        Container(
+          height: 150,
+          width: 350,padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Image.asset(
+                "asset/aa.jpg",fit: BoxFit.fitWidth,),
+              SizedBox(
+                width: 5,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rice",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("100Rs/per Kg", style: TextStyle(color: Colors.white)),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Agra, Up", style: TextStyle(color: Colors.white))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),SizedBox(height: 10,),
+        Container(
+          height: 150,
+          width: 350,padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Image.asset(
+                "asset/aa.jpg",fit: BoxFit.fitWidth,),
+              SizedBox(
+                width: 5,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rice",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("100Rs/per Kg", style: TextStyle(color: Colors.white)),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Agra, Up", style: TextStyle(color: Colors.white))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),SizedBox(height: 10,),
+        Container(
+          height: 150,
+          width: 350,padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Image.asset(
+                "asset/aa.jpg",fit: BoxFit.fitWidth,),
+              SizedBox(
+                width: 5,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rice",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("100Rs/per Kg", style: TextStyle(color: Colors.white)),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Agra, Up", style: TextStyle(color: Colors.white))
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),SizedBox(height: 10,),
+      ],
+    ),
     Text("data"),
     Column(
       children: [
@@ -202,10 +409,10 @@ class _MyHomePageState extends State<MyHomePage>
         scale: animation,
         child: FloatingActionButton(
           elevation: 8,
-          backgroundColor: HexColor('#FFA400'),
+          backgroundColor:Colors.purple,// HexColor('#FFA400'),
           child: Icon(
             Icons.brightness_3,
-            color: HexColor('#373A36'),
+            color: Colors.white,//HexColor('#373A36'),
           ),
           onPressed: () {
             _animationController.reset();
@@ -217,7 +424,7 @@ class _MyHomePageState extends State<MyHomePage>
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         itemCount: iconList.length,
         tabBuilder: (int index, bool isActive) {
-          final color = isActive ? HexColor('#FFA400') : Colors.white;
+          final color = isActive ? Colors.yellow : Colors.white;
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
