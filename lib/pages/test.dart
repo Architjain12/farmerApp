@@ -1,3 +1,4 @@
+import 'package:farmer/widget/productCard.dart';
 import 'package:flutter/material.dart';
 
 class Hp extends StatefulWidget {
@@ -11,83 +12,26 @@ class _HpState extends State<Hp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          backgroundColor: Colors.red,
+          expandedHeight: 400,
+        ),
+        buildImage(),
+      ],
+    ));
+  }
+}
+
+Widget buildImage() => SliverToBoxAdapter(
+      child: ListView(
         children: [
-          ListView(
-            children: [
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.purple,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-            ],
-          ), Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-                color: Colors.purple,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          ),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          ),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          ),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          ),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          ),
+          for (int i = 0; i < 30; i++)
+            ProductCard(
+                productName: "Name_+ ${i.toString()}",
+                productLocation: "Location",
+                productPrice: i.toString())
         ],
       ),
     );
-  }
-}

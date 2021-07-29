@@ -1,5 +1,6 @@
 import 'dart:ui';
 //import 'package:farmer/pages/home.dart';
+import 'package:farmer/pages/imageUpload.dart';
 import 'package:farmer/pages/signUp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyHomePage()),
+                                builder: (context) => HomePage()),
                           );
                         }
                       }

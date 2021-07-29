@@ -27,23 +27,30 @@ class MyTheme {
     primaryColorDark: Colors.white,
     scaffoldBackgroundColor: Color(0xFF121212),
     colorScheme: ColorScheme.dark(),
-    textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+    //textTheme: const TextTheme(
+          //headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          //headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          //bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+        //)
+        textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
+          headline2: TextStyle(fontSize: 18.0, fontStyle: FontStyle.italic),
+          bodyText1: TextStyle(fontSize: 14.0),
+          bodyText2: TextStyle(fontSize: 14.0, color: Color(0xFF616161)),
         )
     
   );
   static final lightTheme = ThemeData(
     primaryColorDark: Colors.black,
     primaryColor: Colors.white,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.white,//.withOpacity(0.8),
     colorScheme: ColorScheme.light(),
     textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
-          headline2: TextStyle(fontSize: 18.0, fontStyle: FontStyle.italic),
-          bodyText1: TextStyle(fontSize: 14.0),
-          bodyText2: TextStyle(fontSize: 14.0, color: Color(0xFF616161)),
+          headline1: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black,),
+          headline2: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Color(0xFF333333),),
+          bodyText1: TextStyle(fontSize: 14.0, color: Color(0xFF121212)),
+          bodyText2: TextStyle(fontSize: 12.0, color: Color(0xFF747474)),
+          
         )
   );
 }

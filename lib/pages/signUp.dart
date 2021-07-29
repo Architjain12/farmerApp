@@ -1,3 +1,4 @@
+import 'package:farmer/pages/imageUpload.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_cropper/image_cropper.dart';
@@ -211,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
             if (formKey.currentState!.validate()) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyHomePage()),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             }
           },

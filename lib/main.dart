@@ -1,6 +1,9 @@
+import 'package:farmer/pages/imageUpload.dart';
+import 'package:farmer/widget/categoryCard.dart';
 import 'package:farmer/pages/getStarted.dart';
 import 'package:farmer/pages/homee.dart';
 import 'package:farmer/pages/test.dart';
+import 'package:farmer/widget/productCard.dart';
 //import 'package:farmer/pages/imageUpload.dart';
 //import 'package:farmer/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
-          home:GetStartedPage(),
+          home:HopePage(),//ProductCard(productName: "rice", productLocation: "a", productPrice: "2")//GetStartedPage(),
         );
       });
 }

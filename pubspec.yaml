@@ -38,6 +38,8 @@ dependencies:
   animated_bottom_navigation_bar: ^0.3.2
   circular_reveal_animation: ^2.0.0
   material_floating_search_bar: ^0.3.4
+  http: ^0.13.3
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -76,9 +78,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Roboto
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
