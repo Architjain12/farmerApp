@@ -77,7 +77,7 @@ class _ProductSliderState extends State<ProductSlider> {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage(item), fit: BoxFit.fill)),
+                      decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(item), fit: BoxFit.fill)),
                       //width: MediaQuery.of(context).size.width,
                       height: 300,
                       //child: Row(children: [Text("Fuck oFF")],),

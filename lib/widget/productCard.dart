@@ -47,7 +47,7 @@ class _ProductCardState extends State<ProductCard> {
                 children: [
                   Text(
                     "${widget.productName}",
-                    style: GoogleFonts.roboto(textStyle: Theme.of(context).textTheme.headline2),
+                    style: GoogleFonts.roboto(textStyle: Theme.of(context).textTheme.headline6),
                   ),
                   Container(
                     child: Row(

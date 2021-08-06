@@ -1,12 +1,12 @@
 import 'dart:ui';
-//import 'package:farmer/pages/home.dart';
-import 'package:farmer/pages/imageUpload.dart';
+import 'package:farmer/pages/data.dart';
 import 'package:farmer/pages/signUp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'homee.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'home.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key? key}) : super(key: key);
@@ -35,7 +35,8 @@ class _LoginFormState extends State<LoginForm> {
                   padding: const EdgeInsets.only(top: 2),
                   child: Text(
                     "Welcome Back!",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: GoogleFonts.roboto(
+                          textStyle: Theme.of(context).textTheme.headline1),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -100,14 +101,14 @@ class _LoginFormState extends State<LoginForm> {
                 child: Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: ElevatedButton(
-                    child: Text("Submit"),
+                    child: Text("Submit",style: GoogleFonts.roboto(
+                          textStyle: Theme.of(context).textTheme.bodyText1)),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         if (auth(_email, _password) == 1) {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()),
+                            MaterialPageRoute(builder: (context) => HomePage()),
                           );
                         }
                       }
@@ -118,7 +119,8 @@ class _LoginFormState extends State<LoginForm> {
               InkWell(
                 child: Container(
                   alignment: Alignment.bottomCenter,
-                  child: Text("Don't have an account? SignUp"),
+                  child: Text("Don't have an account? SignUp",style: GoogleFonts.roboto(
+                          textStyle: Theme.of(context).textTheme.bodyText1)),
                 ),
                 onTap: () {
                   Navigator.push(
@@ -134,5 +136,11 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 int auth(email, password) {
+  setFirstLogin();
   return 1;
+}
+
+setFirstLogin() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setBool('FirstLogin', false);
 }

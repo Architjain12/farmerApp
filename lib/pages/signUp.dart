@@ -1,10 +1,10 @@
-import 'package:farmer/pages/imageUpload.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'homee.dart';
+import 'home.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key? key}) : super(key: key);
@@ -13,10 +13,12 @@ class SignUpPage extends StatefulWidget {
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-String name = "";
-String email = "";
-String phineNumber = "";
-String password = "";
+String _name = "";
+String _mobileNumber = "";
+String _email = "";
+String _location = "";
+String _profileImage = "";
+String Password = "";
 String confirmPassword = "";
 bool eye1 = false;
 bool eye2 = false;
@@ -37,60 +39,72 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding: const EdgeInsets.only(top: 12.0),
                   child: Text(
                     "Welcome to Fasal App",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: GoogleFonts.roboto(
+                        textStyle: Theme.of(context).textTheme.headline1),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("SingUp to enjoy features"),
+                  child: Text("SingUp to enjoy features",
+                      style: GoogleFonts.roboto(
+                          textStyle: Theme.of(context).textTheme.subtitle1)),
                 ),
-                Container(height: 90,width: 90,//decoration: BoxDecoration(image: DecorationImage(image: imagePath==""? AssetImage("asset/aa.jpg"): AssetImage(imagePath)),borderRadius: BorderRadius.all(Radius.circular(60))) ,
-                  child: InkWell(
-                      onTap: () async {
-                        final XFile? image =
-                            await _picker.pickImage(source: ImageSource.gallery);
-                        setState(() {});
-                        if (image != null) {
-                          File? croppedFile = await ImageCropper.cropImage(
-                            sourcePath: image.path,
-                            aspectRatioPresets: [
-                              CropAspectRatioPreset.square,
-                              CropAspectRatioPreset.ratio3x2,
-                              CropAspectRatioPreset.original,
-                              CropAspectRatioPreset.ratio4x3,
-                              CropAspectRatioPreset.ratio16x9
-                            ],
-                            androidUiSettings: AndroidUiSettings(
-                              toolbarTitle: 'Cropper',
-                              toolbarColor: Colors.green[700],
-                              toolbarWidgetColor: Colors.white,
-                              activeControlsWidgetColor: Colors.green[700],
-                              initAspectRatio: CropAspectRatioPreset.original,
-                              lockAspectRatio: false,
-                            ),
-                            iosUiSettings: IOSUiSettings(
-                              minimumAspectRatio: 1.0,
-                            ),
-                          );
-                          if (croppedFile != null) {
-                            setState(() {
-                              imagePath = croppedFile.path;
-                            });
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(90)),
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    child: InkWell(
+                        onTap: () async {
+                          final XFile? image = await _picker.pickImage(
+                              source: ImageSource.gallery);
+                          setState(() {});
+                          if (image != null) {
+                            File? croppedFile = await ImageCropper.cropImage(
+                              sourcePath: image.path,
+                              aspectRatioPresets: [
+                                CropAspectRatioPreset.square,
+                                CropAspectRatioPreset.ratio3x2,
+                                CropAspectRatioPreset.original,
+                                CropAspectRatioPreset.ratio4x3,
+                                CropAspectRatioPreset.ratio16x9
+                              ],
+                              androidUiSettings: AndroidUiSettings(
+                                toolbarTitle: 'Cropper',
+                                toolbarColor: Colors.green[700],
+                                toolbarWidgetColor: Colors.white,
+                                activeControlsWidgetColor: Colors.green[700],
+                                initAspectRatio: CropAspectRatioPreset.original,
+                                lockAspectRatio: false,
+                              ),
+                              iosUiSettings: IOSUiSettings(
+                                minimumAspectRatio: 1.0,
+                              ),
+                            );
+                            if (croppedFile != null) {
+                              setState(() {
+                                imagePath = croppedFile.path;
+                                _profileImage = imagePath;
+                              });
+                            }
                           }
-                        }
-                      },
-                      child: imagePath == ""
-                          ? Icon(
-                              Icons.add_a_photo,
-                              size: 60,
-                            )
-                          : Image.file(
-                              File(imagePath),
-                            )
-                       //Container(height: 100, width:200, decoration: BoxDecoration(image: DecorationImage(image: AssetImage(imagePath))),)//CircleAvatar(backgroundImage: AssetImage(imagePath),minRadius: 0,)//Image.file(File(imagePath),)
-                      ),
+                        },
+                        child: imagePath == ""
+                            ? Icon(
+                                Icons.add_a_photo,
+                                size: 60,
+                              )
+                            : Image.file(
+                                File(imagePath),
+                              )
+                        //Container(height: 100, width:200, decoration: BoxDecoration(image: DecorationImage(image: AssetImage(imagePath))),)//CircleAvatar(backgroundImage: AssetImage(imagePath),minRadius: 0,)//Image.file(File(imagePath),)
+                        ),
+                  ),
                 ),
                 TextFormField(
+                  onChanged: (value) {
+                    _name = value;
+                  },
                   decoration: InputDecoration(
                     hintText: "Enter yout name",
                     prefixIcon: Icon(
@@ -107,6 +121,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
                 TextFormField(
+                  onChanged: (value) {
+                    _email = value;
+                  },
                   decoration: InputDecoration(
                     hintText: "Enter yout email",
                     prefixIcon: Icon(
@@ -122,6 +139,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
                 TextFormField(
+                  onChanged: (value) {
+                    _mobileNumber = value;
+                  },
                   decoration: InputDecoration(
                     hintText: "Enter Phone Number",
                     prefixIcon: Icon(Icons.phone),
@@ -144,7 +164,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: eye1 ? false : true,
                   onChanged: (value) {
                     setState(() {
-                      password = value;
+                      Password = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -169,7 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     if (value!.isEmpty) {
                       return 'Reenter password';
                     } else {
-                      if (password != confirmPassword) {
+                      if (Password != confirmPassword) {
                         return 'Password does not match';
                       } else {
                         return null;
@@ -206,10 +226,17 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Text(
             "Submit",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 30),
+            style: GoogleFonts.roboto(
+                textStyle: Theme.of(context).textTheme.headline1),
           ),
           onTap: () {
             if (formKey.currentState!.validate()) {
+              // Person(
+              //     name: _name,
+              //     email: _email,
+              //     mobileNumber: _mobileNumber,
+              //     profileImage: _profileImage,
+              //     location: _location).toJson();
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => HomePage()),
